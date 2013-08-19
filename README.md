@@ -11,12 +11,13 @@ There are a couple of ways to utilise this script.
 
 1. Mobile first
 <pre>
-	<img src="mobile-image.gif" srcset="larger-image.gif 2x, even-larger-image.gif 3x">
+	&lt;img src="mobile-image.gif" srcset="larger-image.gif 2x, even-larger-image.gif 3x"&gt;
 </pre>
 
 2. Space saver
 <pre>
-	<img src="spacer.gif" srcset="mobile-image.gif 1x, larger-image.gif 2x, even-larger-image.gif 3x">
+	
+	&lt;img src="spacer.gif" srcset="mobile-image.gif 1x, larger-image.gif 2x, even-larger-image.gif 3x"&gt;
 </pre>
 
 
