@@ -1,7 +1,9 @@
 (function() {
+	/* Test if it already supports srcset.*/
+	if('srcset' in document.createElement('img')) return false;
+
 	/* We want to get the device pixel ratio. */
 	var pixelRatio = window.devicePixelRatio || 1;
-
 
 	/* Actually implement the real `imgsrc` algorithm here */
 	function getImgSrc(image) {
