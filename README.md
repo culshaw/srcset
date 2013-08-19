@@ -4,7 +4,7 @@
 
 The goal of this script is to provide a robust and precise way to emulate the behaviour of the `srcset` attribute implemented by (Webkit)[https://www.webkit.org/blog/2910/improved-support-for-high-resolution-displays-with-the-srcset-image-attribute/] until other browser vendors implement the attribute.
 
-Hat tip to: http://odin.s0.no/web/srcset/polyfill.htm from https://twitter.com/scottjehl/status/202618980475744256 for the original code/idea.
+Thanks to: http://odin.s0.no/web/srcset/polyfill.htm from https://twitter.com/scottjehl/status/202618980475744256 for the original code/idea.
 
 Usage Instructions
 ======
