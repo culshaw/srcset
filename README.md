@@ -4,6 +4,8 @@
 
 The goal of this script is to provide a robust and precise way to emulate the behaviour of the `srcset` attribute implemented by (Webkit)[https://www.webkit.org/blog/2910/improved-support-for-high-resolution-displays-with-the-srcset-image-attribute/] until other browser vendors implement the attribute.
 
+Hat tip to: http://odin.s0.no/web/srcset/polyfill.htm from https://twitter.com/scottjehl/status/202618980475744256 for the original code/idea.
+
 Usage Instructions
 ======
 
@@ -14,7 +16,7 @@ There are a couple of ways to utilise this script.
 	<img src="mobile-image.gif" srcset="larger-image.gif 2x, even-larger-image.gif 3x">
 </pre>
 
-2. Space saver
+2. Space saver – By default it will download a blank gif then grab the relevant resolution image and replace with that.
 <pre>
 	<img src="spacer.gif" srcset="mobile-image.gif 1x, larger-image.gif 2x, even-larger-image.gif 3x">
 </pre>
