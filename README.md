@@ -9,6 +9,8 @@ Thanks to @scottjehl: http://odin.s0.no/web/srcset/polyfill.htm from https://twi
 Usage Instructions
 ======
 
+Firstly it's worth noting by specifying the src attribute on 2x & 3x screens you will be making a wasted request loading the initial src. You can however get away with this in method 3, but it won't validate.
+
 There are a couple of ways to utilise this script.
 
 1. Mobile first
@@ -20,6 +22,11 @@ There are a couple of ways to utilise this script.
 <pre>
 	
 	&lt;img src="spacer.gif" srcset="mobile-image.gif 1x, larger-image.gif 2x, even-larger-image.gif 3x"&gt;
+</pre>
+
+3. Single request.
+<pre>
+	&lt;img srcset="small-image.gif 1x, better-image.gif 2x" alt="Srcset image"&gt;
 </pre>
 
 The script also has a future-proof test to check whether srcset is supported out of the box. If so it halts execution.
