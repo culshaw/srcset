@@ -1,29 +1,54 @@
-(function() {
-	/* Test if it already supports srcset.*/
-	if('srcset' in document.createElement('img')) return false;
+(function(window, document) {
+    // Test if it already supports srcset
+    if ('srcset' in document.createElement('img'))
+        return true;
 
-	/* We want to get the device pixel ratio. */
-	var pixelRatio = window.devicePixelRatio || 1;
+    // We want to get the device pixel ratio
+    var maxWidth   = (window.innerWidth > 0) ? window.innerWidth : screen.width,
+        maxHeight  = (window.innerHeight > 0) ? window.innerHeight : screen.height,
+        maxDensity = window.devicePixelRatio || 1;
 
-	/* Actually implement the real `imgsrc` algorithm here */
-	function getImgSrc(image) {
-		if(!image.attributes['srcset']) return false;
-		var img_src, img_ratio, i,
-			imgsrc_parts = image.attributes['srcset'].nodeValue.split(",");
+    // Implement srcset
+    function srcset(image) {
+        if (!image.attributes['srcset'])
+            return false;
 
-		for (i = 0; i < imgsrc_parts.length; i++)
-		{
-			img_src = imgsrc_parts[i].match(/[^\s]+/)[0];
-			img_ratio = imgsrc_parts[i].match(/(\d+)x/)[1];
+        var candidates = image.attributes['srcset'].nodeValue.split(',');
 
-			if (pixelRatio == img_ratio) image.src = img_src;
-		}
-	}
+        for (var i = 0; i < candidates.length; i++) {
+            // The following regular expression was created based on the rules
+            // in the srcset W3C specification available at:
+            // http://www.w3.org/html/wg/drafts/srcset/w3c-srcset/ 
+
+            var descriptors = candidates[i].match(
+                /^\s*([^\s]+)\s*(\s(\d+)w)?\s*(\s(\d+)h)?\s*(\s(\d+)x)?\s*$/
+            );
+
+            var filename = descriptors[1],
+                width    = descriptors[3] || null,
+                height   = descriptors[5] || null,
+                density  = descriptors[7] || 1;
+
+            if (width && width > maxWidth) {
+                continue;
+            }
+
+            if (height && height > maxHeight) {
+                continue;
+            }
+
+            if (density && density > maxDensity) {
+                continue;
+            }
+
+            image.src = filename;
+        }
+    }
 
 
-	var imgs = document.getElementsByTagName('img');
+    var images = document.getElementsByTagName('img');
 
-	for(var i=0; i < imgs.length; i++) {
-		getImgSrc(imgs[i]);
-	}
-})();
+    for (var i=0; i < images.length; i++) {
+        srcset(images[i]);
+    }
+})(window, document);
