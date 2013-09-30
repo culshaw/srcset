@@ -1,11 +1,25 @@
 <!doctype html>
 <html>
-	<head>
-		<title>Javascript example polyfill for srcset</title>
-	</head>
-	<body>
-		<img srcset="small-image.gif 1x, better-image.gif 2x" alt="Srcset image">
+    <head>
+        <title>Javascript example polyfill for srcset</title>
+    </head>
+    <body>
+        <p>
+            srcset: better-image.gif 720w 2x<br />
+            <img src="images/image-1x.gif" srcset="images/image-2x.gif 720w 2x" alt="Srcset image">
+        </p>
 
-		<script src="srcset-polyfill.js"></script>
-	</body>
+        <p>
+            srcset: better-image.gif 2x<br />
+            <img src="images/image-1x.gif" srcset="images/image-2x.gif 2x" alt="Srcset image">
+        </p>
+
+        <p>
+            srcset: [none]<br />
+            <img src="images/image-1x.gif" alt="Srcset image">
+        </p>
+
+        <script src="srcset-polyfill.min.js"></script>
+
+    </body>
 </html>
