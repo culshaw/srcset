@@ -27,11 +27,11 @@
                 height   = descriptors[5] || false,
                 density  = descriptors[7] || 1;
 
-            if (width && width > maxWidth) {
+            if (width && width < maxWidth) {
                 continue;
             }
 
-            if (height && height > maxHeight) {
+            if (height && height < maxHeight) {
                 continue;
             }
 
